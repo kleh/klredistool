@@ -53,8 +53,11 @@ class AppFrame(wx.Frame):
         self.SetAutoLayout(1)
         self.Show(1)
 
+    
+
     def OnQuit(self, e):
         self.Close()
+
 
 if __name__ == "__main__" :
     main()

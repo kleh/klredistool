@@ -1,8 +1,11 @@
 import wx
 import redis
 import sys
+import utils
 
 VALUEITEMS = 5
+
+util = utils.Util()
 
 class setPanel(wx.Panel):
     def __init__(self, parent, appframe):
@@ -56,11 +59,8 @@ class setPanel(wx.Panel):
                 self.values[x].SetValue("")
                 self.values[x].Hide()
 
+    @util.checkConnection
     def saveToRedis(self,e):
-        if self.appframe.connected == False:
-            wx.MessageBox('Not connected','Error',wx.OK | wx.ICON_ERROR)
-            return
-
         key = self.key.GetValue()
         if key == "":
             wx.MessageBox('Missing key','Error',wx.OK | wx.ICON_ERROR)

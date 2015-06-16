@@ -1,6 +1,9 @@
 import wx
 import redis
 import sys
+import utils
+
+util = utils.Util()
 
 class getPanel(wx.Panel):
     def __init__(self, parent, appframe):
@@ -20,11 +23,8 @@ class getPanel(wx.Panel):
         # Bind actions
         self.Bind(wx.EVT_BUTTON,self.getData, self.bget)
 
-
+    @util.checkConnection
     def getData(self,e):
-        if self.appframe.connected == False:
-            wx.MessageBox('Not connected','Error',wx.OK | wx.ICON_ERROR)
-            return
 
         key = self.key.GetValue()
         if key == "":
