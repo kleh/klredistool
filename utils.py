@@ -2,7 +2,7 @@ import wx
 class Util:
 
     # Decorator for checking connection
-    @classmethod
+    
     def checkConnection(self,func):
         def check(*args):
             # args[0] is self from the calling class
